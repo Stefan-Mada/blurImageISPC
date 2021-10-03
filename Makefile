@@ -12,6 +12,9 @@ DEPS = blurImage.hpp
 blurImage: blurImage.o greyScaleISPC.o blurImageISPC.o
 	$(CC) $(CLAFGS) $(WARN) greyScaleISPC.o blurImageISPC.o blurImage.o -o blurImage.out
 
+.PHONY: IR %.ll
 
+%.ll: %.ispc
+	ispc $(ISPCFLAGS) --emit-llvm-text $< -o $@
 
-
+IR: greyScaleISPC.ll blurImageISPC.ll
