@@ -2,8 +2,7 @@
 
 void greyScaleCpp(unsigned char vin[], unsigned char vout[], int height, int width)
 {
-	int currentIndex, avgColor;
-	float redColor, greenColor, blueColor;
+	int currentIndex, avgColor, redColor, greenColor, blueColor;
 	
 	for(int i = 0; i < height; ++i)
 	{
