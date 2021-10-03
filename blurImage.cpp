@@ -1,8 +1,4 @@
 #include "blurImage.hpp"
-#include <iostream>
-#include <fstream>
-#include <exception>
-#include <string>
 
 
 void greyScaleImage(std::ofstream& of, unsigned char* &pixelArr, int width, int height, int maxColor)
@@ -12,7 +8,8 @@ void greyScaleImage(std::ofstream& of, unsigned char* &pixelArr, int width, int 
 	//Create other array to store data
 	unsigned char* pixels = new unsigned char[height*width*3];
 	
-	greyScaleISPC(pixelArr, pixels, height, width);
+	//greyScaleISPC(pixelArr, pixels, height, width);
+	greyScaleCpp(pixelArr, pixels, height, width);
 
 	for(int i = 0; i < height * width * 3; ++i)
 		of << pixels[i];
@@ -28,7 +25,8 @@ void blurImage(std::ofstream& of, unsigned char* &pixelArr, int width, int heigh
 	//Create other array to store data
 	unsigned char* pixels = new unsigned char[height*width*3];
 	
-	blurImageISPC(pixelArr, pixels, height, width, blurRadius);
+	//blurImageISPC(pixelArr, pixels, height, width, blurRadius);
+	blurImageCpp(pixelArr, pixels, height, width, blurRadius);
 
 	for(int i = 0; i < height * width * 3; ++i)
 		of << pixels[i];
@@ -93,7 +91,7 @@ int main(int argc, char *argv[])
 
 
 	
-	blurImage(output, pixels, width, height, maxColor, 40);
+	blurImage(output, pixels, width, height, maxColor, 10);
 //	greyScaleImage(output, pixels, width, height, maxColor);
 
 	//Remove the array's memory
